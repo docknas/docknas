@@ -57,8 +57,9 @@ services:
     binds:
      - /var/lib/docker:/var/lib/docker
      - /lib/modules:/lib/modules
+     - /etc/docker/daemon.json:/etc/docker/daemon.json
   - name: sshd
-    image: "linuxkit/sshd:abc1f5e096982ebc3fb61c506aed3ac9c2ae4d55"
+    image: "docknas/sshd:2f77bde977845d0defa93195ff9f226bbfd93adc"
     capabilities:
       - all
     net: host
@@ -68,25 +69,10 @@ services:
       - /etc/resolv.conf:/etc/resolv.conf
 files:
   - path: etc/docker/daemon.json
-    contents: '{"debug": true}'
+    contents: '{"debug": true, "hosts": ["tcp://127.0.0.1:2375", "unix:///var/run/docker.sock"] }'
   - path: root/.ssh/authorized_keys
     ## TODO: Replace with a proper production key before building
     contents: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC9UxYTKO5KGocd5lpJw9sz/A6VucR9AmotR9bduGiBiZjliI/hV0cB4JcOX0yK0jyavCdWUhUeLbF7ddixVGTlY/+XnmIBiyA+miF75Gl00YiL/o1JK1EXBwpPIcEuzCf+Opmk+iWjuvCOsqxJeY5auPMODXzSUSdxRzpn/feNSw== insecure@local'
 trust:
   org:
     - linuxkit
-  image:
-    - linuxkit/kernel
-    - linuxkit/init
-    - linuxkit/runc
-    - linuxkit/containerd
-    - linuxkit/ca-certificates
-    - linuxkit/sysctl
-    - linuxkit/sysfs
-    - linuxkit/binfmt
-    - linuxkit/format
-    - linuxkit/mount
-    - linuxkit/rngd
-    - linuxkit/dhcpcd
-    - linuxkit/openntpd
-    - linuxkit/sshd
