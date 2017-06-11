@@ -67,6 +67,12 @@ services:
     binds:
       - /root/.ssh:/root/.ssh
       - /etc/resolv.conf:/etc/resolv.conf
+  - name: portainer
+    #image: "portainer/portainer:1.13.2"
+    image: "docknas/portainer:eb5010a646abaa535bb63620fa227ece82e5fb8a"
+    net: host
+    #binds:
+     #- /var/lib/docker/portainer:/data
 files:
   - path: etc/docker/daemon.json
     contents: '{"debug": true, "hosts": ["tcp://127.0.0.1:2375", "unix:///var/run/docker.sock"] }'
