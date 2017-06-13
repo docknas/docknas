@@ -21,7 +21,7 @@ RUN set -x \
         && rm docker.tgz \
         && /out/docker/docker -v
 
-FROM linuxkit/sshd:abc1f5e096982ebc3fb61c506aed3ac9c2ae4d55
+FROM linuxkit/sshd:db273d9830692bb16b9b840c73592664344d39b4
 
 ## Install Docker client inside the SSHD package, so we can use Docker after logging in
 
