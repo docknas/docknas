@@ -24,7 +24,7 @@ onboot:
     image: "linuxkit/mount:ff5338822f20375b8913f5a80f9ed4f6ea9a592b"
     command: ["/mount.sh", "/var/lib/docker"]
   - name: setup
-    image: "docknas/setup:48fe7a2e0fa12e34cf9f55cf4cfefd566c23ca9b"
+    image: "docknas/setup:00234ecf3d7699db170e9b0bb232ea0d68525938"
     binds:
      - /var:/var
 services:
@@ -63,7 +63,7 @@ services:
      - /lib/modules:/lib/modules
      - /etc/docker/daemon.json:/etc/docker/daemon.json
   - name: sshd
-    image: "docknas/sshd:a2e8462858608af36f4f2ed6278487fde99fd252"
+    image: "docknas/sshd:38f1126763f75932880c1da4fa915a5cd2780142"
     capabilities:
       - all
     net: host
@@ -73,7 +73,7 @@ services:
       - /etc/resolv.conf:/etc/resolv.conf
       ##- /var/lib/sshd:/etc/ssh:rbind,rw
   - name: portainer
-    image: "docknas/portainer:eb5010a646abaa535bb63620fa227ece82e5fb8a"
+    image: "docknas/portainer:080ff092c5e27c03aef0948e1ed4b9d33eaefab4"
     net: host
     #binds:
      #- /var/lib/portainer:/data
