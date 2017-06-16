@@ -18,7 +18,7 @@ RUN set -x \
         && tar -C /out -xzvf portainer.tgz \
         && rm portainer.tgz
 
-FROM linuxkit/alpine:630ee558e4869672fae230c78364e367b8ea67a9
+FROM busybox:musl
 
 ## Copy portainer client from the mirror
 COPY --from=build /out/ /opt/
