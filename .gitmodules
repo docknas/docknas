@@ -1,0 +1,6 @@
+[submodule "pkg/zfs/zfs"]
+	path = pkg/zfs/src/zfs
+	url = https://github.com/zfsonlinux/zfs.git
+[submodule "pkg/zfs/spl"]
+	path = pkg/zfs/src/spl
+	url = https://github.com/zfsonlinux/spl.git
