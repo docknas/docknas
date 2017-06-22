@@ -1,5 +1,6 @@
 kernel:
   image: "linuxkit/kernel:4.9.x"
+  #image: "linuxkit/kernel:4.9.31-7a45b314e4fd68ab3bec4bf0ca567251c24d3a7b"
   cmdline: "console=ttyS0 console=tty0 page_poison=1"
 init:
   - linuxkit/init:2599bcd5013ce5962aa155ee8929c26160de13bd
@@ -27,6 +28,15 @@ onboot:
     image: "docknas/setup:00234ecf3d7699db170e9b0bb232ea0d68525938"
     binds:
      - /var:/var
+  - name: zfs
+    image: docknas/zfs:a6ae78639c2707296a51dd81210f2ff74e4ebc6e
+    pid: host
+    ipc: host
+    capabilities:
+      - all
+    binds:
+      - /dev:/dev
+      - /lib/modules:/lib/modules
 services:
   - name: getty
     image: "linuxkit/getty:ef9d667af71089326419fb08e9cc9d567cf15748"
